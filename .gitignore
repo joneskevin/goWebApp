@@ -1,0 +1,10 @@
+*.zip
+*.xlsx
+*.tar
+*.rar
+*.php
+*.gz
+*.wav
+/src/webApp/webApp
+*.exe
+/bin/bee
