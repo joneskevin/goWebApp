@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fly>
+	<!-- life: 玩家生命数 
+		资源我直接配这里算了 addlife 触碰道具回的血量
+		maxlei 可携带最大雷数
+		eatboxname可以吃道具的葫芦娃-->
+	<config life="1000" addlife="50" maxlei="3" eatboxname="selfM2"/>
+	<!-- 葫芦娃的数据 这里我只是把基础武器拿出来配置了，特殊武器没提出来，这里配置的武器信息都是基础武器的
+		name 主键名字(跟资源进行了绑定，不能随意修改)
+		speed 葫芦娃的移动速度
+		cut 被击中减少的血量 
+		wPower 葫芦娃所使用武器的威力
+		wSpeed 葫芦娃所使用武器的速度
+		wMaxStrength 葫芦娃所使用武器的单次最多发射子弹数
+		wSendTime 葫芦娃所使用武器的射速  单位毫秒 ?毫秒/次
+		wPenetrate 是否能够穿透-->
+	<self name="selfM1" speed="8" cut="30" wPower="10" wSpeed="20" wMaxStrength="6" wSendTime="200" wPenetrate="0"/>
+	<self name="selfM2" speed="15" cut="15" wPower="2" wSpeed="10" wMaxStrength="3" wSendTime="300" wPenetrate="0"/>
+	<self name="selfM3" speed="3" cut="5" wPower="2" wSpeed="5" wMaxStrength="3" wSendTime="200" wPenetrate="0"/>
+	<!-- 敌军的模版数据
+		name 主键名字(跟资源进行了绑定，不能随意修改)
+		move 移动方式(详见下描述)
+		target 目标 0没有目标 1玩家
+		maxSpeed 最大速率
+		maxPalstance 最大角速率
+		maxLif 最大生命值
+		reward 摧毁获得的奖金
+		behavior 行为 (wrap:运动到边缘时移到对侧  bounce:运动到边缘时反弹  cling:运动到边缘时贴在边缘 remove:运动到边缘时从显示列表中移除)
+		gun 装备的武器(空为未装备武器 simple2Gun:最低级的枪 seekS2Cannon:二连发跟踪弹 s1Cannon:五连发加速弹  simplePro2Gun:十连散弹)
+		
+		1=最普通怪
+		2=快速普通怪
+		3=血厚、慢速、子弹多
+		4=血厚、快速
+		5=追踪怪
+		6=漫游怪、不消失
+		7=炮台怪、血厚、子弹多
+		
+		-->
+	<enemy name="enemyD1" move="common" target="0" maxSpeed="3" maxPalstance="10" maxLif="10" reward="3" behavior="remove" gun="simple2Gun"/>
+	<enemy name="enemyD2" move="common" target="1" maxSpeed="9" maxPalstance="10" maxLif="20" reward="6" behavior="remove" gun=""/>
+	<enemy name="enemyD3" move="common" target="0" maxSpeed="1" maxPalstance="10" maxLif="100" reward="10" behavior="remove" gun="simple2Gun"/>
+	<enemy name="enemyD4" move="common" target="0" maxSpeed="15" maxPalstance="10" maxLif="200" reward="15" behavior="remove" gun=""/>
+	<enemy name="enemyD5" move="seek" target="1" maxSpeed="3" maxPalstance="10" maxLif="100" reward="30" behavior="remove" gun="simple2Gun"/>
+	<enemy name="enemyD6" move="wander" target="0" maxSpeed="8" maxPalstance="5" maxLif="300" reward="20" behavior="wrap" gun="s1Cannon"/>
+	<enemy name="enemyD7" move="common" target="0" maxSpeed="0" maxPalstance="1" maxLif="500" reward="50" behavior="remove" gun="simplePro2Gun"/>
+
+	<!-- 敌军生成规则 
+		time 每隔多久时间生成 单位 秒
+		starttime 运行多久以后才会派发
+		name 生成的敌军
+		from 起始范围点(包括)
+		to 截至范围点(不包括)
+		direction 目标朝向
+	<enemyrule time="2" starttime="" name="enemyD4" fromx="1280" tox="1280" fromy="10" toy="10" direction="-1"/>
+	<enemyrule time="2" starttime="2" name="enemyD2" fromx="1280" tox="1280" fromy="60" toy="70" direction="-1"/>
+	<enemyrule time="2" starttime="4" name="enemyD2" fromx="1280" tox="1280" fromy="100" toy="110" direction="-1"/>
+	<enemyrule time="2" starttime="6" name="enemyD2" fromx="1280" tox="1280" fromy="160" toy="160" direction="-1"/>
+	<enemyrule time="2" starttime="8" name="enemyD2" fromx="1280" tox="1280" fromy="190" toy="200" direction="-1"/>
+	<enemyrule time="2" starttime="10" name="enemyD2" fromx="1280" tox="1280" fromy="270" toy="270" direction="-1"/>
+	<enemyrule time="2" starttime="" name="enemyD2" fromx="1280" tox="1280" fromy="330" toy="340" direction="-1"/>
+	<enemyrule time="2" starttime="" name="enemyD2" fromx="1280" tox="1280" fromy="450" toy="460" direction="-1"/>
+	<enemyrule time="2" starttime="" name="enemyD2" fromx="1280" tox="1280" fromy="570" toy="580" direction="-1"/>
+	<enemyrule time="2" starttime="" name="enemyD2" fromx="1280" tox="1280" fromy="690" toy="690" direction="-1"/>
+	
+	<enemyrule time="3" starttime="" name="enemyD2" fromx="1280" tox="1280" fromy="0" toy="700" direction="-1"/>
+	<enemyrule time="3" starttime="" name="enemyD2" fromx="1280" tox="1280" fromy="0" toy="700" direction="-1"/>
+	<enemyrule time="5" starttime="" name="enemyD2" fromx="1280" tox="1280" fromy="0" toy="700" direction="-1"/>
+	<enemyrule time="5" starttime="" name="enemyD3" fromx="1280" tox="1280" fromy="0" toy="700" direction="-1"/>
+	<enemyrule time="5" starttime="" name="enemyD3" fromx="1280" tox="1280" fromy="0" toy="700" direction="-1"/>
+	<enemyrule time="5" starttime="" name="enemyD3" fromx="1280" tox="1280" fromy="0" toy="700" direction="-1"/>
+	<enemyrule time="5" starttime="" name="enemyD3" fromx="1280" tox="1280" fromy="0" toy="700" direction="-1"/>
+	<enemyrule time="5" starttime="" name="enemyD3" fromx="1280" tox="1280" fromy="0" toy="700" direction="-1"/>
+	<enemyrule time="5" starttime="" name="enemyD3" fromx="1280" tox="1280" fromy="0" toy="700" direction="-1"/>
+	<enemyrule time="5" starttime="" name="enemyD4" fromx="1280" tox="1280" fromy="0" toy="700" direction="-1"/>
+	<enemyrule time="5" starttime="" name="enemyD4" fromx="1280" tox="1280" fromy="0" toy="700" direction="-1"/>
+	<enemyrule time="5" starttime="7" name="enemyD4" fromx="1280" tox="1280" fromy="0" toy="700" direction="-1"/>
+	<enemyrule time="5" starttime="4" name="enemyD6" fromx="1280" tox="1280" fromy="0" toy="700" direction="-1"/>
+	<enemyrule time="5" starttime="10" name="enemyD6" fromx="1280" tox="1280" fromy="0" toy="700" direction="-1"/>
+	
+	-->
+
+
+
+	<enemyrule time="3.5" starttime="1" name="enemyD1" fromx="1280" tox="1280" fromy="100" toy="300" direction="-1"/>
+	<enemyrule time="3" starttime="2" name="enemyD1" fromx="1280" tox="1280" fromy="300" toy="500" direction="-1"/>
+	<enemyrule time="4.5" starttime="3" name="enemyD1" fromx="1280" tox="1280" fromy="500" toy="700" direction="-1"/>
+	<enemyrule time="5" starttime="30" name="enemyD1" fromx="1280" tox="1280" fromy="300" toy="500" direction="-1"/>
+	<enemyrule time="5.5" starttime="32" name="enemyD1" fromx="1280" tox="1280" fromy="500" toy="700" direction="-1"/>
+	<enemyrule time="6" starttime="8" name="enemyD2" fromx="1280" tox="1280" fromy="50" toy="300" direction="-1"/>
+	<enemyrule time="6.5" starttime="15" name="enemyD2" fromx="1280" tox="1280" fromy="100" toy="700" direction="-1"/>
+	<enemyrule time="10" starttime="22" name="enemyD3" fromx="1280" tox="1280" fromy="100" toy="700" direction="-1"/>
+	<enemyrule time="7" starttime="20" name="enemyD4" fromx="1280" tox="1280" fromy="100" toy="700" direction="-1"/>
+	<enemyrule time="12" starttime="15" name="enemyD5" fromx="1280" tox="1280" fromy="100" toy="700" direction="-1"/>
+	<enemyrule time="18" starttime="21" name="enemyD6" fromx="1280" tox="1280" fromy="100" toy="700" direction="-1"/>
+	<enemyrule time="22" starttime="20" name="enemyD7" fromx="900" tox="1200" fromy="100" toy="400" direction="-1"/>
+	<enemyrule time="14" starttime="45" name="enemyD3" fromx="1280" tox="1280" fromy="100" toy="700" direction="-1"/>
+	<enemyrule time="9" starttime="35" name="enemyD4" fromx="1280" tox="1280" fromy="100" toy="700" direction="-1"/>
+	<enemyrule time="16" starttime="50" name="enemyD5" fromx="1280" tox="1280" fromy="100" toy="700" direction="-1"/>
+	<enemyrule time="20" starttime="50" name="enemyD6" fromx="1280" tox="1280" fromy="100" toy="700" direction="-1"/>
+	<enemyrule time="24" starttime="40" name="enemyD7" fromx="900" tox="1200" fromy="400" toy="700" direction="-1"/>	
+	
+	
+	
+	
+	<!-- 资源生成规则 
+		name 不想写了  也没拿出来配  直接用以前的吧  现在有这几种  lifeBox 加血(lifeBox)      lieBox 加雷(lei)     simpleBox加普通子弹(a)  s2Box跟踪弹(b)   s1Box 加速弹(b3)
+	-->
+	<boxrule time="13" startime="10" name="simpleBox" fromx="1280" tox="1280" fromy="0" toy="700"/>
+	<boxrule time="29" startime="40" name="s2Box" fromx="1280" tox="1280" fromy="0" toy="700"/>
+	<boxrule time="19" startime="20" name="s1Box" fromx="1280" tox="1280" fromy="0" toy="700"/>
+	<boxrule time="33" startime="30" name="leiBox" fromx="1280" tox="1280" fromy="0" toy="700"/>
+	<boxrule time="23" startime="20" name="lifeBox" fromx="1280" tox="1280" fromy="0" toy="700"/>
+	
+	<!--
+	 * move 的详细介绍
+	 * <p>智能移动物体，具有高级移动特性。</p>   tips: 暂只支持前五种（未来可能也只会有这五种）
+	 * <li>正常移动（common)：角色以均数移动</li>
+	 * <li>监视（oversee)：角色试图将朝向某个指定点或另一个角色。</li>
+	 * <li>寻找（seek)：角色试图移动到某个指定点。该点可以是一个固定点或是移动目标，例如另一个角色。</li>
+	 * <li>漫游（wander）：随机但又平滑真实的移动。</li>
+	 * <li>追赶（pursue）：寻找行为的改进版，加入了对目标的速度的计算。不只寻找目标当前所在的点，而要预先判断目标要去哪里并向此点移动。显然，这个行为只应用在移动目标，因为固定点是没有速度的。</li>
+	 * <li>躲避（flee）：和寻找行为完全相反。角色尽可能向避开指定点的方向移动。同样，这个点即可是固定的也可是运动的。</li>
+	 * <li>到达（arrive）: 和寻找行为相同，只是角色足够接近目标点时速度会降下来，就像缓动运动最终停在目标点一样。</li>
+	 * <li>逃离（evade）：与追赶完全相反。角色预先根据对方的速度判断到达的点，然后尽可能地远离该点。</li>
+	 * <li>物体躲避（object avoidance）：角色可以察觉在其运动路径上的物体并转向躲避它们。</li>
+	 * <li>路径跟随（path following）：角色尽量保持在指定路径上，但这是在持续的物理和其它行为干扰下实现的。</li><br/>
+	 * <br/>
+	 * 
+	 * 除了这些行为以外，还有复杂的复合行为，如我们熟知的集群（flocking）模拟相似角色的群组行为，基本上是应用其它三种简单行为创造出来的：
+	 * <li>分离（separation）：集群中的每个角色试图与他的邻居保持一定距离。</li>
+	 * <li>凝聚（cohesion）：每个角色试图不要离他的邻居太远。</li>
+	 * <li>队列（alignment）：每个角色试图与他的邻居保持相同的转向。</li>
+	-->
+</fly>

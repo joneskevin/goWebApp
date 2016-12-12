@@ -1,0 +1,14 @@
+<cross-domain-policy> 
+	<allow-access-from domain="*.acg.tv" /> 
+	<allow-access-from domain="*.loli.my" /> 
+	<allow-access-from domain="*.kankanews.com" /> 
+	<allow-access-from domain="*.smgbb.com" /> 
+	<allow-access-from domain="*.hdslb.com" /> 
+	<allow-access-from domain="*.hdslb.net" /> 
+	<allow-access-from domain="*.hdslb.org" /> 
+	<allow-access-from domain="*.acgvideo.com" /> 
+	<allow-access-from domain="*.letvcdn.com" /> 
+	<allow-access-from domain="*.letvimg.com" /> 
+	<allow-access-from domain="*.tudou.com" /> 
+	<allow-access-from domain="*.tudouui.com" /> 
+</cross-domain-policy>
