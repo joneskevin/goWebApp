@@ -29,4 +29,4 @@ export GOPATH=/项目所放路径/goWebApp
 cd $GOPATH/src/webApp
 bee run
 ```
-
+Tests
